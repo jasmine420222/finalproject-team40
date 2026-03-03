@@ -1,5 +1,5 @@
 """
-app.py (v4)
+app.py
 Chicago South Side: Housing Density & Health Inequality
 
 This dashboard is designed for non-technical audiences.
