@@ -1,4 +1,4 @@
-# Chicago South Side Inequality Dashboard (v4)
+# Chicago South Side Inequality Dashboard
 
 This dashboard explores **address density** (a proxy for housing concentration), **income**, and **uninsured rates** at the **Census Tract** level in Chicago's South Side.
 
