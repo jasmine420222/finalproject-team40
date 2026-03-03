@@ -1,0 +1,15 @@
+# Mac
+.DS_Store
+__MACOSX/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Outputs
+# data/derived-data/
