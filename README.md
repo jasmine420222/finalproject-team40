@@ -1,6 +1,6 @@
-# Chicago South Side Inequality Dashboard
+# Housing Density, Income, and Uninsured Rates in Chicago’s South Side
 
-This dashboard explores **address density** (a proxy for housing concentration), **income**, and **uninsured rates** at the **Census Tract** level in Chicago's South Side.
+This project explores how housing density and neighborhood income relate to uninsured rates at the Census Tract level. It provides descriptive, tract-level evidence for policy discussion.
 
 ## Usage
 
@@ -11,12 +11,12 @@ pip install -r requirements.txt
 
 2) Build tract-level dataset (generates `derived-data/merged_tract.geojson`)
 ```bash
-python preprocessing.py
+python code/preprocessing.py
 ```
 
 3) Run the dashboard
 ```bash
-streamlit run app.py
+streamlit run streamlit-app/app.py
 ```
 
 ## Notes
