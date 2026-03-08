@@ -303,4 +303,4 @@ First, address counts are only a proxy for residential density and may not accur
 
 ## Policy Implications
 
-Although this analysis is descriptive, the results suggest that uninsured rates are more strongly associated with income differences than with housing density. Tracts with low income and high uninsured rates may therefore represent areas for further policy attention and research.
+Although this analysis is descriptive, the results suggest that uninsured rates are more strongly associated with income differences than with housing density. Tracts with low income and high uninsured rates may therefore represent areas where policy outreach efforts should be prioritized. The interactive dashboard further allows policymakers to adjust thresholds for income, uninsured rates, and residential density to identify priority tracts under different policy goals. This tool can help guide targeted outreach or enrollment initiatives by highlighting neighborhoods where limited insurance coverage is most concentrated and where additional resources may have the greatest impact.
