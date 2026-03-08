@@ -8,7 +8,7 @@ thresholds and weighting scenarios.
 
 Data input:
 - data/derived-data/merged_tract.geojson  (produced by preprocessing.py)
-  Address data source: cleaned_F_ADD1_not0.csv (~46,899 residential buildings)
+  Address data source: address_data.csv (488,689 residential buildings)
 """
 
 import warnings
@@ -38,7 +38,7 @@ TEXT_DARK  = "#111111"
 # =============================================================================
 st.set_page_config(
     page_title="Housing Density, Income, and Uninsured Rates in Chicago's South Side",
-    page_icon="🏙️",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -92,7 +92,6 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 
-# =============================================================================
 # Data loading
 # =============================================================================
 @st.cache_data
@@ -156,15 +155,12 @@ def winsorize(s: pd.Series, lo: float = 0.01, hi: float = 0.99) -> pd.Series:
     a, b = s.quantile(lo), s.quantile(hi)
     return s.clip(a, b)
 
-
-# =============================================================================
 # Load data
 # =============================================================================
 gdf = load_data()
 HAS_UNITS = "unit_per_sqkm" in gdf.columns and gdf["unit_per_sqkm"].notna().any()
 
 
-# =============================================================================
 # Sidebar
 # =============================================================================
 with st.sidebar:
@@ -214,7 +210,6 @@ with st.sidebar:
     use_log_density = st.checkbox("Use log scale for density plots", value=True)
 
 
-# =============================================================================
 # Filter dataset
 # =============================================================================
 filtered = gdf.copy()
@@ -240,7 +235,6 @@ filtered["priority_flag"] = (
 )
 
 
-# =============================================================================
 # Header
 # =============================================================================
 st.title("Housing Density, Income, and Uninsured Rates in Chicago's South Side")
@@ -251,8 +245,6 @@ st.write(
 )
 st.markdown("---")
 
-
-# =============================================================================
 # KPIs
 # =============================================================================
 total_pop            = filtered["tot_pop"].replace([np.inf, -np.inf], np.nan).sum(skipna=True)
@@ -353,24 +345,7 @@ with tabs[0]:
         map_key = f"map_{map_metric}_{density_q}_{low_income_q}_{uninsured_q}"
         st_folium(m, height=560, use_container_width=True, key=map_key)
 
-    with right:
-        dist = filtered[map_metric].replace([np.inf, -np.inf], np.nan).dropna()
-        dist_df = pd.DataFrame({"value": dist})
 
-        hist = (
-            alt.Chart(dist_df)
-            .mark_bar(opacity=0.9, color=CHI_BLUE)
-            .encode(
-                x=alt.X("value:Q", bin=alt.Bin(maxbins=25), title=map_metric_label),
-                y=alt.Y("count():Q", title="Number of tracts")
-            )
-            .properties(height=220)
-            .configure_axis(
-                labelColor=TEXT_DARK, titleColor=TEXT_DARK, gridColor="#E5E7EB"
-            )
-            .configure_view(stroke=None)
-        )
-        st.altair_chart(hist, use_container_width=True)
 
 
 # =============================================================================
