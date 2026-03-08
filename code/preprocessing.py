@@ -32,7 +32,7 @@ RAW_DIR = DATA_DIR / "raw-data"
 DERIVED_DIR = DATA_DIR / "derived-data"
 DERIVED_DIR.mkdir(parents=True, exist_ok=True)
 
-CSV_PATH = RAW_DIR / "cleaned_addresses_full.csv"    # full Chicago address dataset
+CSV_PATH = RAW_DIR / "address_data.csv"    # South of Chicago address dataset
 SHP_PATH = RAW_DIR / "il_tract.shp"
 OUT_PATH = DERIVED_DIR / "merged_tract.geojson"
 
